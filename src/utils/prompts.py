@@ -60,53 +60,53 @@ Règles :
 
 Réponds STRICTEMENT en JSON valide, sans texte autour, avec ce format :
 
-{
+{{
   "route": "rag",
   "reason": "question sur les notes de cours",
   "tool_input": "contenu utile seulement"
-}
+}}
 
 Exemples :
 
 Question : "Calcule 15 + 7 * 2"
 Réponse :
-{
+{{
   "route": "calculator",
   "reason": "demande de calcul",
   "tool_input": "15 + 7 * 2"
-}
+}}
 
 Question : "Recherche web définition récente du fine-tuning"
 Réponse :
-{
+{{
   "route": "web_search",
   "reason": "demande de recherche externe",
   "tool_input": "définition récente du fine-tuning"
-}
+}}
 
 Question : "Ajoute à ma todo : réviser les jointures SQL"
 Réponse :
-{
+{{
   "route": "todo_add",
   "reason": "ajout d'une tâche",
   "tool_input": "réviser les jointures SQL"
-}
+}}
 
 Question : "Supprime la tâche 2"
 Réponse :
-{
+{{
   "route": "todo_remove",
   "reason": "suppression d'une tâche",
   "tool_input": "2"
-}
+}}
 
 Question : "Crée un quiz sur la régression logistique"
 Réponse :
-{
+{{
   "route": "quiz",
   "reason": "demande de quiz de révision",
   "tool_input": "régression logistique"
-}
+}}
 
 Question utilisateur :
 {question}
