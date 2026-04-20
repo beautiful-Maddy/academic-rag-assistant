@@ -10,7 +10,7 @@ from src.router import route_question
 st.set_page_config(page_title="Academic RAG Assistant", page_icon="🎓", layout="wide")
 
 st.title("🎓 Academic RAG Assistant")
-st.caption("Assistant académique : RAG + agent léger + quiz + outils + mémoire")
+st.caption("Assistant académique intelligent: RAG + agent + quiz + mémoire")
 
 if not OPENAI_API_KEY:
     st.error("La clé OPENAI_API_KEY est manquante dans le fichier .env")
