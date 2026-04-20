@@ -1,19 +1,40 @@
-from duckduckgo_search import DDGS
+from tavily import TavilyClient
+import os
+from dotenv import load_dotenv
+
+load_dotenv()
 
 def web_search(query: str, max_results: int = 5) -> str:
     try:
-        with DDGS() as ddgs:
-            results = list(ddgs.text(query, max_results=max_results))
+        client = TavilyClient(api_key=os.getenv("TAVILY_API_KEY"))
+
+        response = client.search(
+            query=query,
+            search_depth="advanced",
+            max_results=max_results,
+            include_answer=True 
+        )
+
+        # 👉 ICI
+        answer = response.get("answer", "")
+
+        results = response.get("results", [])
 
         if not results:
             return "Aucun résultat trouvé."
 
         formatted = []
+
+        # 👉 on ajoute la réponse synthétique en haut
+        if answer:
+            formatted.append(f"🧠 Réponse rapide :\n{answer}\n")
+
         for i, result in enumerate(results, start=1):
             title = result.get("title", "Sans titre")
-            body = result.get("body", "")
-            href = result.get("href", "")
-            formatted.append(f"{i}. {title}\n{body}\n{href}")
+            content = result.get("content", "")
+            url = result.get("url", "")
+
+            formatted.append(f"{i}. {title}\n{content}\n{url}")
 
         return "\n\n".join(formatted)
 
