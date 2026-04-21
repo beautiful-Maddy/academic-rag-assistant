@@ -15,7 +15,7 @@ def web_search(query: str, max_results: int = 5) -> str:
             include_answer=True 
         )
 
-        # 👉 ICI
+    
         answer = response.get("answer", "")
 
         results = response.get("results", [])
@@ -25,7 +25,7 @@ def web_search(query: str, max_results: int = 5) -> str:
 
         formatted = []
 
-        # 👉 on ajoute la réponse synthétique en haut
+        #  Ajout de la réponse synthétique en haut
         if answer:
             formatted.append(f"🧠 Réponse rapide :\n{answer}\n")
 
